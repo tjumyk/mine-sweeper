@@ -2,17 +2,22 @@
 // Created by Kelvin on 2016/4/12.
 //
 
-#if defined(__linux__) || ( defined(__APPLE__) && defined(__MACH__))
+#if defined(__linux__) || (defined(__APPLE__) && defined(__MACH__))
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_mixer.h>
+
 #else
+
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #include <SDL_mixer.h>
+
 #endif
+
 #include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -47,15 +52,9 @@ Mix_Chunk *clickSound = NULL;
 Mix_Chunk *explosionSound = NULL;
 Mix_Chunk *winSound = NULL;
 
-SDL_Color bgColor = {0xFF,
-                     0xFF,
-                     0xFF,
-                     0xFF};
+SDL_Color bgColor = {0xFF, 0xFF, 0xFF, 0xFF};
 SDL_Color lineColor = {0xEF, 0xEF, 0xEF, 0xFF};
-SDL_Color blockColor = {0x3F,
-                        0x7F,
-                        0xCF,
-                        0xFF};
+SDL_Color blockColor = {0x3F, 0x7F, 0xCF, 0xFF};
 SDL_Color numColors[NUMBER_TEXTURES] = {
         {0x20, 0x20, 0xFF, 0xFF},
         {0x20, 0xFF, 0x20, 0xFF},
@@ -85,9 +84,9 @@ static bool init(int argc, char **argv) {
 
     int width = DEFAULT_MAP_WIDTH, height = DEFAULT_MAP_HEIGHT, mines = DEFAULT_MAP_MINES;
     if (argc > 3) {
-        width = (int)strtol(argv[1], NULL, 10);
-        height = (int)strtol(argv[2], NULL, 10);
-        mines = (int)strtol(argv[3], NULL, 10);
+        width = (int) strtol(argv[1], NULL, 10);
+        height = (int) strtol(argv[2], NULL, 10);
+        mines = (int) strtol(argv[3], NULL, 10);
     }
     int screenWidth = width * BLOCK_SIZE;
     int screenHeight = height * BLOCK_SIZE;
@@ -142,7 +141,7 @@ static bool init(int argc, char **argv) {
     map = createMap(width, height, mines);
     if (!map)
         success = false;
-    else{
+    else {
 #ifdef debug
         printMap(map);
 #endif
