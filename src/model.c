@@ -200,6 +200,10 @@ void finaliseMap(Map *map, int startRow, int startColumn) {
             if (replaced)
                 break;
         }
+#ifdef debug
+        puts("Adjusted map to avoid first-click explosion");
+        printMap(map);
+#endif
     }
     for (int i = 0; i < map->height; ++i) {
         for (int j = 0; j < map->width; ++j) {
