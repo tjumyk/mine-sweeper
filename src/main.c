@@ -2,13 +2,18 @@
 // Created by Kelvin on 2016/4/12.
 //
 
+#if defined(__linux__) || ( defined(__APPLE__) && defined(__MACH__))
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_mixer.h>
+#else
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #include <SDL_mixer.h>
-#include <stdio.h>
+#endif
 #include <stdbool.h>
-#include <stdlib.h>
 #include "model.h"
 
 #define SCREEN_FPS 60
@@ -60,27 +65,27 @@ SDL_Color numColors[NUMBER_TEXTURES] = {
         {0xA9, 0xA9, 0xA9, 0xFF}
 };
 
-bool init(int argc, char **argv);
+static bool init(int argc, char **argv);
 
-bool loadMedia();
+static bool loadMedia();
 
-SDL_Texture *loadImageTexture(const char *path);
+static SDL_Texture *loadImageTexture(const char *path);
 
-TextTexture *loadTextTexture(TTF_Font *font, const char *str, SDL_Color color);
+static TextTexture *loadTextTexture(TTF_Font *font, const char *str, SDL_Color color);
 
-Mix_Chunk *loadSound(const char *path);
+static Mix_Chunk *loadSound(const char *path);
 
-void close();
+static void close();
 
 
-bool init(int argc, char **argv) {
+static bool init(int argc, char **argv) {
     bool success = true;
 
     int width = DEFAULT_MAP_WIDTH, height = DEFAULT_MAP_HEIGHT, mines = DEFAULT_MAP_MINES;
     if (argc > 3) {
-        width = atol(argv[1]);
-        height = atol(argv[2]);
-        mines = atol(argv[3]);
+        width = (int)strtol(argv[1], NULL, 10);
+        height = (int)strtol(argv[2], NULL, 10);
+        mines = (int)strtol(argv[3], NULL, 10);
     }
     int screenWidth = width * BLOCK_SIZE;
     int screenHeight = height * BLOCK_SIZE;
@@ -135,12 +140,15 @@ bool init(int argc, char **argv) {
     map = createMap(width, height, mines);
     if (!map)
         success = false;
-    else
+    else{
+#ifdef debug
         printMap(map);
+#endif
+    }
     return success;
 }
 
-bool loadMedia() {
+static bool loadMedia() {
     bool success = true;
     gFont = TTF_OpenFont("res/DroidSans.ttf", (int) (BLOCK_SIZE * 0.75));
     if (gFont == NULL) {
@@ -149,7 +157,7 @@ bool loadMedia() {
     } else {
         char numStr[2];
         for (int i = 0; i < NUMBER_TEXTURES; ++i) {
-            itoa(i + 1, numStr, 10);
+            snprintf(numStr, 2, "%d", i + 1);
             TextTexture *texture = loadTextTexture(gFont, numStr, numColors[i]);
             if (texture == NULL) {
                 success = false;
@@ -178,7 +186,7 @@ bool loadMedia() {
     return success;
 }
 
-Mix_Chunk *loadSound(const char *path) {
+static Mix_Chunk *loadSound(const char *path) {
     Mix_Chunk *sound = Mix_LoadWAV(path);
     if (sound == NULL) {
         printf("Failed to load sound effect! SDL_mixer Error: %s\n", Mix_GetError());
@@ -186,7 +194,7 @@ Mix_Chunk *loadSound(const char *path) {
     return sound;
 }
 
-SDL_Texture *loadImageTexture(const char *path) {
+static SDL_Texture *loadImageTexture(const char *path) {
     SDL_Texture *newTexture = NULL;
     SDL_Surface *loadedSurface = IMG_Load(path);
     if (loadedSurface == NULL) {
@@ -202,7 +210,7 @@ SDL_Texture *loadImageTexture(const char *path) {
     return newTexture;
 }
 
-TextTexture *loadTextTexture(TTF_Font *font, const char *str, SDL_Color color) {
+static TextTexture *loadTextTexture(TTF_Font *font, const char *str, SDL_Color color) {
     SDL_Surface *textSurface = TTF_RenderText_Blended(font, str, color);
     if (textSurface != NULL) {
         TextTexture *text = NULL;
@@ -223,13 +231,13 @@ TextTexture *loadTextTexture(TTF_Font *font, const char *str, SDL_Color color) {
     return NULL;
 }
 
-void destroyTextTexture(TextTexture *texture) {
+static void destroyTextTexture(TextTexture *texture) {
     SDL_DestroyTexture(texture->texture);
     free(texture);
 }
 
 
-void close() {
+static void close() {
     if (map != NULL) {
         destroyMap(map);
         map = NULL;
@@ -411,5 +419,5 @@ int main(int argc, char **argv) {
         }
     }
     close();
-    return 0;
+    return EXIT_SUCCESS;
 }
