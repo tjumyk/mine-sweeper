@@ -82,3 +82,19 @@
  Hard         |30         |16          |99               
 
  The default parameters are adopted from the "Easy" difficulty and will be used when no customized parameters are given (e.g. when you double-click it).
+
+## Tests
+
+### Platform support
+
+ - [ ] Windows 10 (32 bit) + MinGW 32
+ - [x] Windows 10 (64 bit) + MinGW 32
+ - [ ] Windows 10 (32 bit) + Visual Studio 2015
+ - [ ] Windows 10 (64 bit) + Visual Studio 2015
+ - [ ] Ubuntu 14.04 (32 bit)
+ - [x] Ubuntu 14.04 (64 bit)
+ - [ ] Mac OS X 10.11
+ - [ ] Android 4.2
+ - [ ] iOS 9.3
+
+ Only ticked platforms are tested, but technically all platforms listed above should be able to support this game.
