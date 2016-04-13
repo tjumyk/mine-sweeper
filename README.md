@@ -57,11 +57,11 @@
 
  If you run it through command line, you may specify custom initialization parameters for this game:
 
- | #   | meaning        | example |
- |:---:|:--------------:|:-------:|
- |1    |map width       |16       |
- |2    |map height      |16       |
- |3    |number of mines |40       |
+  #   | meaning        | example 
+ :---:|:--------------:|:-------:
+ 1    |map width       |16      
+ 2    |map height      |16       
+ 3    |number of mines |40       
 
  e.g.
 
@@ -71,10 +71,10 @@
 
  The classical parameter settings are:
 
- | Difficulty  | map width | map height | number of mines |
- |:-----------:|:---------:|:----------:|:---------------:|
- |Easy         |9          |9           |10               |
- |Intermediate |16         |16          |40               |
- |Hard         |30         |16          |99               |
+  Difficulty  | map width | map height | number of mines 
+ :-----------:|:---------:|:----------:|:---------------:
+ Easy         |9          |9           |10               
+ Intermediate |16         |16          |40               
+ Hard         |30         |16          |99               
 
  The default parameters are adopted from the "Easy" difficulty and will be used when no custom parameters are given (e.g. when you double-click it).
