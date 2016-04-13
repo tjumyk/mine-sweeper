@@ -20,12 +20,12 @@
 
 ### Setup
 
- 1. Download **Development Libraries** from [SDL 2 download page](https://www.libsdl.org/download-2.0.php) or install them from the package manager.
- 2. Download other **Development Libraries** for the following SDL plugins or install them from the package manager.
+ 1. Download **Development Libraries** from [SDL 2 download page](https://www.libsdl.org/download-2.0.php) or install them from the package manager of your OS.
+ 2. Download other **Development Libraries** for the following SDL plugins or install them from the package manager of your OS.
     1. [SDL2_image](https://www.libsdl.org/projects/SDL_image/) for loading and rendering various formats of images
     2. [SDL2_ttf](https://www.libsdl.org/projects/SDL_ttf/) for loading and rendering TTF fonts
     3. [SDL2_mixer](https://www.libsdl.org/projects/SDL_mixer/) for loading and playing music and sounds
- 3. Modify CMakeLists.txt to correct the paths of library files
+ 3. If you download these files manually, you should modify `CMakeLists.txt` to correct the paths of library files. If you are using a package manager, probably you don't need to change this, because the libraries will be installed globally.
 
 ### Build
 
