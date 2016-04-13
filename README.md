@@ -4,7 +4,11 @@
 
 ## Screenshots
 
+![screen shot 1](screenshots/1.png)
 
+![screen shot 2](screenshots/2.png)
+
+![screen shot 3](screenshots/3.png)
 
 ## How to build
 
@@ -55,7 +59,7 @@
 
 ### Parameters
 
- If you run it through command line, you may specify custom initialization parameters for this game:
+ If you run it through command line, you may specify customized initialization parameters for this game:
 
   #   | meaning        | example 
  :---:|:--------------:|:-------:
@@ -77,4 +81,4 @@
  Intermediate |16         |16          |40               
  Hard         |30         |16          |99               
 
- The default parameters are adopted from the "Easy" difficulty and will be used when no custom parameters are given (e.g. when you double-click it).
+ The default parameters are adopted from the "Easy" difficulty and will be used when no customized parameters are given (e.g. when you double-click it).
