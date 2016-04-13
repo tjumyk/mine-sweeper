@@ -14,6 +14,8 @@
 #include <SDL_mixer.h>
 #endif
 #include <stdbool.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include "model.h"
 
 #define SCREEN_FPS 60
