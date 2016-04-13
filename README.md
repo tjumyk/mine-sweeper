@@ -97,4 +97,4 @@
  - [ ] Android 4.2
  - [ ] iOS 9.3
 
- Only ticked platforms are tested, but technically all platforms listed above should be able to support this game.
+Only ticked platforms are tested, but technically all platforms listed above should be able to support this game.
