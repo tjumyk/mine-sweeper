@@ -412,7 +412,7 @@ int main(int argc, char **argv) {
                 }
 
                 SDL_RenderPresent(gRenderer);
-                int frameTicks = SDL_GetTicks() - capStart;
+                Uint32 frameTicks = SDL_GetTicks() - capStart;
                 if (frameTicks < SCREEN_TICK_PER_FRAME) {
                     SDL_Delay(SCREEN_TICK_PER_FRAME - frameTicks);
                 }

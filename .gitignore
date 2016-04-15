@@ -4,3 +4,5 @@ lib/
 *.iml
 
 */Thumbs.db
+
+build/

@@ -90,7 +90,7 @@
  - [ ] Windows 10 (32 bit) + MinGW 32
  - [x] Windows 10 (64 bit) + MinGW 32
  - [ ] Windows 10 (32 bit) + Visual Studio 2015
- - [ ] Windows 10 (64 bit) + Visual Studio 2015
+ - [x] Windows 10 (64 bit) + Visual Studio 2015
  - [ ] Ubuntu 14.04 (32 bit)
  - [x] Ubuntu 14.04 (64 bit)
  - [ ] Mac OS X 10.11
