@@ -7,9 +7,9 @@
 #include <time.h>
 #include "model.h"
 
-void initMap(Map *map);
+static void initMap(Map *map);
 
-void finaliseMap(Map *map, int startRow, int startColumn);
+static void finaliseMap(Map *map, int startRow, int startColumn);
 
 Map *createMap(int width, int height, int mines) {
     if (width <= 0 || height <= 0 || width * height <= mines)
@@ -160,7 +160,7 @@ void markMap(Map *map, int row, int column) {
 }
 
 
-void initMap(Map *map) {
+static void initMap(Map *map) {
     map->firstVisit = true;
     for (int i = 0; i < map->height; ++i) {
         for (int j = 0; j < map->width; ++j) {
@@ -183,7 +183,7 @@ void initMap(Map *map) {
     }
 }
 
-void finaliseMap(Map *map, int startRow, int startColumn) {
+static void finaliseMap(Map *map, int startRow, int startColumn) {
     if (map->field[startRow][startColumn]) {
         bool replaced = false;
         for (int i = 0; i < map->height; ++i) {
