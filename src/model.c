@@ -12,11 +12,9 @@ void initMap(Map *map);
 void finaliseMap(Map *map, int startRow, int startColumn);
 
 Map *createMap(int width, int height, int mines) {
-    Map *map = (Map *) malloc(sizeof(Map));
-    if (map == NULL)
-        return NULL;
     if (width <= 0 || height <= 0 || width * height <= mines)
         return NULL;
+    Map *map = (Map *) malloc(sizeof(Map));
     map->width = width;
     map->height = height;
     map->totalMines = map->remainMines = mines;
