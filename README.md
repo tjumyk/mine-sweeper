@@ -61,7 +61,7 @@
 
  If you run it through command line, you may specify customized initialization parameters for this game:
 
-  #   | meaning        | example 
+  argument   | meaning        | example 
  :---:|:--------------:|:-------:
  1    |map width       |16      
  2    |map height      |16       
